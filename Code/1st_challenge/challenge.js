@@ -18,21 +18,27 @@ class MyComponent extends React.Component {
     names.push(name);
     this.setState({names})
   }
-
-  render () {
-    const {names} = this.state;
+  MyItems = ()=>{
+        const {names} = this.state;
     const items = [];
+     for (const [index, value] of names.entries()) {
+            items.push(<li key={index}>{value}</li>)
+          }
+    return items;
+  }
+  render () {
+
     return (
+      <div>
         <label>Name: </label>
         <input type="text" id="input" />
         <button onClick={this.addName}>Add</button>
-        <br>
+        <br/>
         <ul>{
-          for (const [index, value] of names.entries()) {
-            items.push(<li key={index}>{value}</li>)
-          }
+         this.MyItems()
          }
-        </ul>
+          </ul>
+      </div>
     );
   } 
 }
